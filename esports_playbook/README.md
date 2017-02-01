@@ -1,4 +1,0 @@
-# EsportsPlaybook
-
-**TODO: Add description**
-
