@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TopNav from './TopNav.jsx';
-import PlaybookLibrary from '../home/PlaybookLibrary.jsx';
 
 class App extends Component {
   render() {
@@ -10,7 +9,7 @@ class App extends Component {
             <TopNav/>
           </div>
           <div className="body-content container">
-              <PlaybookLibrary/>
+            {this.props.children}
           </div>
       </div>
     );

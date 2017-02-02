@@ -35,6 +35,8 @@ defmodule PlaybookApi.Endpoint do
     store: :cookie,
     key: "_playbook_api_key",
     signing_salt: "qKJFWAkv"
+    
+  plug CORSPlug
 
   plug PlaybookApi.Router
 end

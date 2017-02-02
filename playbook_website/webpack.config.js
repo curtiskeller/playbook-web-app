@@ -13,7 +13,14 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
-      }
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000,
+        },
+      },
     ]
   },
 };

@@ -7,5 +7,7 @@ defmodule PlaybookApi.Router do
 
   scope "/api", PlaybookApi do
     pipe_through :api
+
+    get "/playbooklibrary", PlaybookLibraryController, :index
   end
 end

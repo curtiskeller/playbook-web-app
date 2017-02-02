@@ -4,3 +4,37 @@
 .body-content{
     padding-top: 5rem;
 }
+.thumbnail {
+  position: relative;
+  width: inherit;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}
+.card{
+    margin-bottom: 1rem
+}
+.card-img-overlay:hover {
+    background-color: rgba(0,0,0,.5);
+    cursor: pointer;
+}
+a {
+    color: inherit
+}
+a:hover{
+    color: inherit
+}
