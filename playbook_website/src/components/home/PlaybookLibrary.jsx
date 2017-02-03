@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
 import PlaybookLibraryCard from './PlaybookLibraryCard.jsx';
-import axios from 'axios';
+import * as PlaybookLibraryActions from '../../actions/PlaybookLibraryActions.js'
+import PlaybookLibraryStore from '../../stores/PlaybookLibraryStore.js'
 
 class PlaybookLibrary extends Component {
     constructor(){
         super();
-        this.state = {playbooks: []}
+        this.getPlaybookLibrary = this.getPlaybookLibrary.bind(this);
+        this.state = { playbooks: PlaybookLibraryStore.getAll()}; 
+        PlaybookLibraryActions.loadPlaybookLibrary(); 
     }
-    componentWillMount(){
-        this.getPlaybooks();
+
+    componentWillMount() {
+        PlaybookLibraryStore.on("change", this.getPlaybookLibrary);
     }
-    getPlaybooks() {
-        axios('/playbooklibrary').then((response) => { this.setState({playbooks: response.data})});
+
+    componentWillUnmount(){
+        PlaybookLibraryStore.removeListener("change", this.getPlaybookLibrary);
     }
+
+    getPlaybookLibrary()
+    {
+        this.setState({
+            playbooks: PlaybookLibraryStore.getAll()
+        });
+    }
+
     render() {
-        const Playbooks = this.state.playbooks.map((playbook, i) => <PlaybookLibraryCard key={playbook.id} id={playbook.id} name={playbook.name} owner={playbook.owner}/>);
+        const Playbooks = this.state.playbooks.map((playbook) => <PlaybookLibraryCard key={playbook.id} id={playbook.id} name={playbook.name} owner={playbook.owner}/>);
        
         return (
                 <div className="row">
