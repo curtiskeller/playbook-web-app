@@ -23,4 +23,11 @@ module.exports = {
       },
     ]
   },
+  plugins: [
+      new webpack.ProvidePlugin({
+        $: "jquery-slim",
+        jQuery: "jquery-slim",
+        Tether: "tether"
+      })
+    ],
 };
