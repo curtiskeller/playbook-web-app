@@ -24,6 +24,7 @@ class PlaybookLibraryStore extends EventEmitter{
             case "RECEIVE_PLAYBOOKLIBRARY":
             {
                 this.receivePlaybookLibrary(action.playbooks);
+                break;
             }
         }
     }
