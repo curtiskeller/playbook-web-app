@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ChatMessage from './ChatMessage.jsx'
 import * as ChatActions from '../../actions/ChatActions.js'
 import ChatStore from '../../stores/ChatStore.js'
 
@@ -35,6 +36,8 @@ class Chat extends Component {
     }
     componentWillMount() {
         const { socket, topic } = this.props;
+        console.log(topic);
+        
         ChatActions.joinChatSession(socket,topic);
         ChatStore.on("change", this.updateMessages);
     }
@@ -43,7 +46,7 @@ class Chat extends Component {
     }
 
     render() {
-        const Messages = this.state.messages.map((message) => <div><b> {message.body} </b><br/></div>);
+        const Messages = this.state.messages.map((message, index) => <ChatMessage key={index} body={message.body}/> );
         return (
             <div id="chat">
                 {Messages}

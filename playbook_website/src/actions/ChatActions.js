@@ -19,3 +19,10 @@ export function sendMessage(message,socket,topic){
 	});
 	channel.push("new_msg", {body: message})
 }
+
+export function sendMessage(message,socket,topic){
+	const channel = socket.channels.find((channel) => {
+		return channel.topic === topic;
+	});
+	channel.push("new_msg", {body: message})
+}

@@ -20,7 +20,7 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={PlaybookLibrary} onEnter={()=>NavLinkActions.routeChange('INDEX')}></IndexRoute>
-      <Route path="scratch" name="scratch" component={() => (<Scratch socket={socket} />)} onEnter={()=>NavLinkActions.routeChange('SCRATCH')}></Route>
+      <Route path="scratch/:scratchId" name="scratch" component={Scratch} onEnter={()=>NavLinkActions.routeChange('SCRATCH')}></Route>
       <Route path="playbookOverview/:playbook" name="playbookOverview" component={PlaybookOverview}></Route>
     </Route>
   </Router>, app);
