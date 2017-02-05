@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 
 import dispatcher from "../dispatcher.js"
 
-class RouteStore extends EventEmitter{
+class NavLinkStore extends EventEmitter{
     constructor()
     {
         super();
@@ -33,8 +33,8 @@ class RouteStore extends EventEmitter{
     }
 }
 
-const routeStore = new RouteStore;
+const navLinkStore = new NavLinkStore;
 
-dispatcher.register(routeStore.handleActions.bind(routeStore));
+dispatcher.register(navLinkStore.handleActions.bind(navLinkStore));
 
-export default routeStore;
+export default navLinkStore;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-import RouteStore from '../../stores/RouteStore'
+import NavLinkStore from '../../stores/NavLinkStore.js'
 
 class NavLink extends Component {
     constructor(){
@@ -15,17 +15,17 @@ class NavLink extends Component {
     }
 
     componentWillMount() {
-        RouteStore.on("change", this.getActiveState);
+        NavLinkStore.on("change", this.getActiveState);
     }
 
     componentWillUnmount(){
-        RouteStore.removeListener("change", this.getActiveState);
+        NavLinkStore.removeListener("change", this.getActiveState);
     }
 
     getActiveState()
     {
         this.setState({
-            active: RouteStore.getRoute() === this.props.url 
+            active: NavLinkStore.getRoute() === this.props.url 
         });
     }
 

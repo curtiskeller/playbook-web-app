@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import * as ScratchActions from '../../actions/ScratchActions.js'
+import Chat from '../core/Chat.jsx';
 
 class Scratch extends Component {
-	
-	componentDidMount() {
-		const { socket } = this.props;
-		ScratchActions.joinScratchSession(socket);
-	}
-
     render() {
         return (
-            <p>Scratch</p>
-        );
+            <div>
+                <p>Scratch</p>
+                <Chat socket={this.props.socket} topic={"room:lobby"} />
+            </div>
+        );//TODO: CHANGE LOBBY TO ID
     }
 }
 
