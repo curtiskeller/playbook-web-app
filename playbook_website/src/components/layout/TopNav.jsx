@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import NavLink from './NavLink.jsx';
+import { Link } from 'react-router'
+import { IndexLink } from 'react-router'
 
 class TopNav extends Component {
     render() {
@@ -12,8 +13,16 @@ class TopNav extends Component {
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        <NavLink url="/" text="Home" />
-                        <NavLink url="/scratch" text="Scratch" />
+                        <li className="nav-item">
+                            <IndexLink activeStyle={{ color: '#53acff' }} className="nav-link" to='/'>
+                                <span>Home</span>
+                            </IndexLink>
+                        </li>
+                        <li className="nav-item">
+                            <Link activeStyle={{ color: '#53acff' }} className="nav-link" to='/scratch'>
+                                <span>Scratch</span>
+                            </Link>
+                        </li>
                     </ul>
                     <span className="navbar-text">
                         Username
