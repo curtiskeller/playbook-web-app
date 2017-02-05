@@ -3,8 +3,7 @@ import { EventEmitter } from "events";
 import dispatcher from "../dispatcher.js"
 
 class PlaybookLibraryStore extends EventEmitter{
-    constructor()
-    {
+    constructor() {
         super();
         this.playbooks = [];
     }
@@ -13,14 +12,13 @@ class PlaybookLibraryStore extends EventEmitter{
         return this.playbooks;
     }
 
-    receivePlaybookLibrary(playbooks)
-    {
+    receivePlaybookLibrary(playbooks) {
         this.playbooks = playbooks;
         this.emit("change");
     }
     
-    handleActions(action){
-        switch(action.type){
+    handleActions(action) {
+        switch(action.type) {
             case "RECEIVE_PLAYBOOKLIBRARY":
             {
                 this.receivePlaybookLibrary(action.playbooks);

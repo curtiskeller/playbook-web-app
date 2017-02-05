@@ -2,7 +2,7 @@ defmodule PlaybookApi.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", PlaybookApi.RoomChannel
+  channel "room:*", PlaybookApi.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
