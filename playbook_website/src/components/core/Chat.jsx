@@ -19,6 +19,7 @@ class Chat extends Component {
             newMessage: this.state.newMessage
         });
     }
+
     handleMessageInput(event) {
         this.setState(
             {
@@ -26,6 +27,7 @@ class Chat extends Component {
                 newMessage: event.target.value
             });
     }
+
     sendMessage() {
         const { socket, topic } = this.props;
         ChatActions.sendMessage(this.state.newMessage,socket,topic);
@@ -34,24 +36,30 @@ class Chat extends Component {
             newMessage: ""
         })
     }
+
     componentWillMount() {
         const { socket, topic } = this.props;
-        console.log(topic);
         
         ChatActions.joinChatSession(socket,topic);
         ChatStore.on("change", this.updateMessages);
     }
+
     componentWillUnmount() {
+        const { socket, topic } = this.props;
+        ChatActions.leaveChatSession(socket,topic)
         ChatStore.removeListener("change", this.updateMessages);
     }
+
     componentWillReceiveProps(nextProps)
     {
         const { socket, topic } = nextProps;
         if(this.props.topic !== nextProps.topic)
         {
+            ChatActions.leaveChatSession(socket, this.props.topic);
             ChatActions.joinChatSession(socket,topic);
         }
     }
+
     render() {
         const Messages = this.state.messages.map((message, index) => <ChatMessage key={index} body={message.body}/> );
         return (

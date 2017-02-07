@@ -1,10 +1,6 @@
 defmodule PlaybookApi.RoomChannel do
 	use Phoenix.Channel
 
-	def join("room:lobby", _message, socket) do
-		{:ok, socket}
-	end
-
 	def join("room:" <> _room_id, _params, socket) do
         {:ok, socket}
     end
