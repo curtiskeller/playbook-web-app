@@ -44,7 +44,14 @@ class Chat extends Component {
     componentWillUnmount() {
         ChatStore.removeListener("change", this.updateMessages);
     }
-
+    componentWillReceiveProps(nextProps)
+    {
+        const { socket, topic } = nextProps;
+        if(this.props.topic !== nextProps.topic)
+        {
+            ChatActions.joinChatSession(socket,topic);
+        }
+    }
     render() {
         const Messages = this.state.messages.map((message, index) => <ChatMessage key={index} body={message.body}/> );
         return (
