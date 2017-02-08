@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Chat from '../core/Chat.jsx';
 
-import socket from '../../channels/socket.js';
 
 class Scratch extends Component {
     render() {
@@ -9,7 +8,7 @@ class Scratch extends Component {
         return (
             <div>
                 <p>Scratch</p>
-                <Chat socket={socket} topic={"room:" + scratchId} />
+                <Chat topic={"room:" + scratchId} />
             </div>
         );//TODO: CHANGE LOBBY TO ID
     }

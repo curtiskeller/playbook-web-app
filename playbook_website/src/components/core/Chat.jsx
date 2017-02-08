@@ -29,8 +29,8 @@ class Chat extends Component {
     }
 
     sendMessage() {
-        const { socket, topic } = this.props;
-        ChatActions.sendMessage(this.state.newMessage,socket,topic);
+        const { topic } = this.props;
+        ChatActions.sendMessage(this.state.newMessage,topic);
         this.setState({
             messages: this.state.messages,
             newMessage: ""
@@ -38,25 +38,25 @@ class Chat extends Component {
     }
 
     componentWillMount() {
-        const { socket, topic } = this.props;
+        const { topic } = this.props;
         
-        ChatActions.joinChatSession(socket,topic);
+        ChatActions.joinChatSession(topic);
         ChatStore.on("change", this.updateMessages);
     }
 
     componentWillUnmount() {
-        const { socket, topic } = this.props;
-        ChatActions.leaveChatSession(socket,topic)
+        const { topic } = this.props;
+        ChatActions.leaveChatSession(topic)
         ChatStore.removeListener("change", this.updateMessages);
     }
 
     componentWillReceiveProps(nextProps)
     {
-        const { socket, topic } = nextProps;
+        const { topic } = nextProps;
         if(this.props.topic !== nextProps.topic)
         {
-            ChatActions.leaveChatSession(socket, this.props.topic);
-            ChatActions.joinChatSession(socket,topic);
+            ChatActions.leaveChatSession(this.props.topic);
+            ChatActions.joinChatSession(topic);
         }
     }
 
