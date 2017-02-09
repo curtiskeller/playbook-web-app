@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import {PIXI} from 'pixi.js';
+import PlaybookImg from '../../../static/de_mirage.png';
+import { Container } from 'pixi.js';
 
 class EditorCanvas extends Component {
-    
-    componentDidMount(){
-        //Create the renderer
-        var renderer = PIXI.autoDetectRenderer(256, 256);
+
+    componentDidMount() {
+        var renderer = PIXI.autoDetectRenderer(1100, 800);
 
         document.getElementById("canvas").appendChild(renderer.view);
 
         //Create a container object called the `stage`
         var stage = new PIXI.Container();
 
-        renderer.render(stage);
+        PIXI.loader.add(PlaybookImg).load(() => {
+
+            var backgroundImage = new PIXI.Sprite(PIXI.loader.resources[PlaybookImg].texture)
+            stage.addChild(backgroundImage);
+            renderer.render(stage);
+
+        })
     }
 
     render() {

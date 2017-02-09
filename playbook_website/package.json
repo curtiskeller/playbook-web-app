@@ -21,10 +21,6 @@
     "tether": "^1.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "dev": "webpack-dev-server --content-base src --inline --hot",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "webpack-dev-server --content-base src --inline --hot"
   }
 }
