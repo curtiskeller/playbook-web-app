@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Chat from '../core/Chat.jsx';
-
+import EditorCanvas from '../core/EditorCanvas.jsx';
 
 class Scratch extends Component {
     render() {
@@ -8,6 +8,7 @@ class Scratch extends Component {
         return (
             <div>
                 <p>Scratch</p>
+                <EditorCanvas/>
                 <Chat topic={"room:" + scratchId} />
             </div>
         );//TODO: CHANGE LOBBY TO ID
