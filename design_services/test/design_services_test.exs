@@ -8,7 +8,7 @@ defmodule DesignServicesTest do
 
   test "initializes supervision tree" do
   	basepid = Process.whereis(DesignServices)
-  	chatpid = Process.whereis(DesignServices.ChatSupervisor)
+  	chatpid = Process.whereis(DesignServices.PlayDesignSupervisor)
   	assert basepid != nil
   	assert chatpid != nil
   end

@@ -5,7 +5,7 @@ defmodule DesignServices do
     import Supervisor.Spec
 
     children = [
-      supervisor(DesignServices.ChatSupervisor, [], [name: ChatSupervisor]),
+      supervisor(DesignServices.PlayDesignSupervisor, [], [name: PlayDesignSupervisor]),
     ]
 
     opts = [strategy: :one_for_one, name: __MODULE__]
