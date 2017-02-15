@@ -30,7 +30,7 @@ class Chat extends Component {
 
     sendMessage() {
         const { topic } = this.props;
-        ChatActions.sendMessage(this.state.newMessage,topic);
+        ChatActions.sendMessage(this.state.newMessage, topic);
         this.setState({
             messages: this.state.messages,
             newMessage: ""
