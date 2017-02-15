@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import * as EditorCanvasActions from '../../actions/EditorCanvasActions.js'
 import PlaybookImg from '../../../static/de_mirage.png';
 import { Container } from 'pixi.js';
 
 class EditorCanvas extends Component {
+
+    componentWillMount() {
+        const { topic } = this.props;
+        EditorCanvasActions.joinDesignSession(topic);
+    }
 
     componentDidMount() {
         var renderer = PIXI.autoDetectRenderer(1100, 800);

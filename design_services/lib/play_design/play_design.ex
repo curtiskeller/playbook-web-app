@@ -3,17 +3,26 @@ defmodule DesignServices.PlayDesign do
 
 	# Interface Functions
 
-	def start_link(state) do
-		GenServer.start_link(__MODULE__, state, [])
+	def start_link(%{ :play_design_id => play_design_id} = state) do
+		name = via_tuple(play_design_id)
+		GenServer.start_link(__MODULE__, state, name: name)
 	end
 
-	def get_play(pid) do
-		GenServer.call(pid, :get_play)
+	# Creates a via tuple to lookup/create from Registry
+	defp via_tuple(play_design_id) do
+    	{:via, Registry, {:design_process_registry, play_design_id}}
+  	end
+
+	def get_play(play_design_id) do
+		via_tuple(play_design_id)
+		|> GenServer.call(:get_play)
 	end
 
-	def update(pid, new_state) do
-		GenServer.call(pid, { :update, new_state })
+	def update(play_design_id, new_state) do
+		via_tuple(play_design_id)
+		|> GenServer.call({ :update, new_state })
 	end
+	
 	# Callbacks
 
 	def init(state) do
