@@ -18,11 +18,16 @@ defmodule DesignServices.PlayDesign do
 		|> GenServer.call(:get_play)
 	end
 
-	def update(play_design_id, new_state) do
+	def update(play_design_id, key, value) do
 		via_tuple(play_design_id)
-		|> GenServer.call({ :update, new_state })
+		|> GenServer.call({ :update, key, value})		
 	end
-	
+
+	def update_simple(play_design_id, new_state) do
+		via_tuple(play_design_id)
+		|> GenServer.call({ :update_simple, new_state })
+	end
+
 	# Callbacks
 
 	def init(state) do
@@ -33,7 +38,12 @@ defmodule DesignServices.PlayDesign do
 		{ :reply, state, state }
 	end
 
-	def handle_call({ :update, new_state }, _from, state) do
+	def handle_call({ :update, key, value}, _from, state) do
+		new_state = Map.put(state, key, value)
+		{ :reply, new_state, new_state}
+	end
+
+	def handle_call({ :update_simple, new_state }, _from, _state) do
 		{ :reply, new_state, new_state}
 	end
 end
