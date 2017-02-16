@@ -1,8 +1,9 @@
 import dispatcher from "../dispatcher";
 import socket from '../channels/socket.js';
+const topicPrefix = "room:";
 
 export function joinChatSession(topic) {
-	const channel = socket.channel(topic)
+	const channel = socket.channel(topicPrefix + topic)
 	
 	channel.on("new_msg", payload => {
 			dispatcher.dispatch({ type: 'CHAT_MESSAGE', payload: payload });
@@ -15,14 +16,14 @@ export function joinChatSession(topic) {
 
 export function sendMessage(message, topic) {
 	const channel = socket.channels.find((channel) => {
-		return channel.topic === topic;
+		return channel.topic === (topicPrefix + topic);
 	});
 	channel.push("new_msg", {body: message})
 }
 
 export function leaveChatSession(topic) {
 	const channel = socket.channels.find((channel) => {
-		return channel.topic === topic;
+		return channel.topic === (topicPrefix + topic);
 	});
 	channel.leave();
 }

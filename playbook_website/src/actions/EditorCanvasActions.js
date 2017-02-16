@@ -9,6 +9,7 @@ export function joinDesignSession(topic) {
 			dispatcher.dispatch({ type: 'UPDATE_MESSAGE', payload: payload });
 	})
 
+
 	channel.join()
     .receive('ok', () => { console.log("joined design successfully!")})
     .receive("error", resp => { console.log("Unable to join design", resp) });

@@ -6,6 +6,11 @@ import { Container } from 'pixi.js';
 
 class EditorCanvas extends Component {
 
+    componentWillMount() {
+        const { topic } = this.props;
+        EditorCanvasActions.joinDesignSession(topic);
+    }
+
     componentDidMount() {
         EditorCanvasActions.updateProperty(this.props.topic,"name","coreyTest")
 
