@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import * as EditorCanvasActions from '../../actions/EditorCanvasActions.js'
+import EditorCanvasStore from '../../stores/EditorCanvasStore.js'
 import PlaybookImg from '../../../static/de_mirage.png';
 import { Container } from 'pixi.js';
 
 class EditorCanvas extends Component {
 
     componentDidMount() {
+        EditorCanvasActions.updateProperty(this.props.topic,"name","coreyTest")
+
         var renderer = PIXI.autoDetectRenderer(1100, 800);
 
         document.getElementById("canvas").appendChild(renderer.view);
