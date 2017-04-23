@@ -39,7 +39,6 @@ defmodule PlaybookApi.Endpoint do
     key: "_playbook_api_key",
     signing_salt: "qKJFWAkv"
     
-  plug CORSPlug
-
+  plug Corsica, origins: "*"
   plug PlaybookApi.Router
 end

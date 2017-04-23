@@ -10,7 +10,7 @@ class FileUploader extends Component {
         var formData = new FormData();
         formData.append('file', file);
         $.ajax({
-            url:'http://localhost:4000/file',
+            url:'http://localhost:4000/api/file',
             type : 'POST',
             data : formData,
             processData: false,  // tell jQuery not to process the data

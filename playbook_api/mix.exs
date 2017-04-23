@@ -17,7 +17,7 @@ defmodule PlaybookApi.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {PlaybookApi, []},
-     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :design_services]]
+     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :corsica, :gettext, :design_services]]
   end
 
   # Specifies which paths to compile per environment.
@@ -32,7 +32,7 @@ defmodule PlaybookApi.Mixfile do
      {:phoenix_pubsub, "~> 1.0"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:cors_plug, "~> 1.1"},
+     {:corsica, "~> 0.5.0"},
      {:design_services, path: "../design_services/"}]
   end
 end
