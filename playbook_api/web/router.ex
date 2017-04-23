@@ -9,5 +9,6 @@ defmodule PlaybookApi.Router do
     pipe_through :api
 
     get "/playbooklibrary", PlaybookLibraryController, :index
+    post "/file", FileController, :upload
   end
 end
