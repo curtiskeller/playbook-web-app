@@ -11,6 +11,9 @@ defmodule PlaybookApi.Endpoint do
     at: "/", from: :playbook_api, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
+  # Serve files from here
+  plug Plug.Static, at: "/files", from: "/media"
+
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
