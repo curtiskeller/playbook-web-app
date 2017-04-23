@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
+import * as $ from 'jquery';
 
 class FileUploader extends Component {
     handleFileSelect(e) {
         var files = e.dataTransfer.files; // FileList object.
         console.log(files);
         //convert File to useable data type.
+        var file = files[0];
+        var formData = new FormData();
+        formData.append('file', file);
+        $.ajax({
+            url:'http://localhost:4000/file',
+            type : 'POST',
+            data : formData,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            success : function(data) {
+                console.log(data);
+                alert(data);
+            }
+        });
     }
 
     silenceEventDefaults(e) {
