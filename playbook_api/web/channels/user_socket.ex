@@ -3,7 +3,7 @@ defmodule PlaybookApi.UserSocket do
 
   ## Channels
   channel "room:*", PlaybookApi.RoomChannel
-  channel "play:*", PlaybookApi.PlayChannel
+  #channel "play:*", PlaybookApi.PlayChannel
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
   # transport :longpoll, Phoenix.Transports.LongPoll

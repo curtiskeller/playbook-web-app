@@ -8,7 +8,6 @@ class Scratch extends Component {
         return (
             <div>
                 <p>Scratch</p>
-                <EditorCanvas topic={scratchId}/>
                 <Chat topic={scratchId} />
             </div>
         );//TODO: CHANGE LOBBY TO ID

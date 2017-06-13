@@ -31,7 +31,7 @@ class PlaybookLibrary extends Component {
        
         return (
                 <div className="row">
-                    {Playbooks}
+
                 </div>
         );
     }
